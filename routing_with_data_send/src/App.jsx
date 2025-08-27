@@ -31,8 +31,6 @@ const router = createBrowserRouter([{
         {
             path: "product/:productId",
             element: <ProductDetails />,
-            loader: () => FetchData('http://localhost:9000/products'),
-            errorElement: <ErrorBoundary />,
         },
         {path: "thanks", element: <Thanks />},
         {path: "*", element: <NotFound />},
