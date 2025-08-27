@@ -2,9 +2,9 @@ import {useLoaderData, useParams} from "react-router-dom";
 
 
 export default function ProductDetails() {
-    const products = useLoaderData();
     const { productId} = useParams()
-    const currentProduct = products.find(p => p.id === parseInt(productId, 10))
+    const products = useLoaderData()
+    const currentProduct = products.find(p => p.id === productId)
     if (!currentProduct) {
         return <p className="text-center text-red-500 font-bold text-xl">Not found</p>
     }
