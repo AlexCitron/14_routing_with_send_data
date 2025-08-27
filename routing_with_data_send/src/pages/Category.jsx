@@ -1,8 +1,7 @@
-import { products } from "../data/data.js";
-import {Link, useParams, useSearchParams} from "react-router-dom";
-
+import {Link, useLoaderData, useParams, useSearchParams} from "react-router-dom";
 
 export default function Category() {
+    const products = useLoaderData();
     const [searchParams, setSearchParams] = useSearchParams();
 
     const  { categoryId} = useParams()

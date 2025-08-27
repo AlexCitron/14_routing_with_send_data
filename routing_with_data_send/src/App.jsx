@@ -8,15 +8,28 @@ import NotFound from "./pages/NotFound.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
 import Layout from "./components/Layout.jsx";
 import Thanks from "./pages/Thanks.jsx";
+import FetchData from "./utils/FetchData.js";
 
 /*Setting routes*/
 const router = createBrowserRouter([{
     path: "/", element: <Layout />, children: [
-        {index: true, element: <Home />},
+        {
+            index: true,
+            element: <Home />,
+            loader: () => FetchData('http://localhost:9000/categories'),
+        },
         {path: "cart", element: <Cart />},
         {path: "about", element: <About />},
-        {path: "category/:categoryId", element: <Category />},
-        {path: "product/:productId", element: <ProductDetails />},
+        {
+            path: "category/:categoryId",
+            element: <Category />,
+            loader: () => FetchData('http://localhost:9000/products'),
+        },
+        {
+            path: "product/:productId",
+            element: <ProductDetails />,
+            loader: () => FetchData('http://localhost:9000/products'),
+        },
         {path: "thanks", element: <Thanks />},
         {path: "*", element: <NotFound />},
     ]

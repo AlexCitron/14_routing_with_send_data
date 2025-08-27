@@ -1,8 +1,8 @@
-import {products} from "../data/data.js";
-import {useParams} from "react-router-dom";
+import {useLoaderData, useParams} from "react-router-dom";
 
 
 export default function ProductDetails() {
+    const products = useLoaderData();
     const { productId} = useParams()
     const currentProduct = products.find(p => p.id === parseInt(productId, 10))
     if (!currentProduct) {

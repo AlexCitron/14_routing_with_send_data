@@ -1,7 +1,8 @@
-import {categories} from "../data/data.js";
-import {Link} from "react-router-dom";
+import {Link, useLoaderData} from "react-router-dom";
 
 export default function Home() {
+    const categories = useLoaderData()
+    console.log(categories)
 
     return (
         <div className='py-10'>
