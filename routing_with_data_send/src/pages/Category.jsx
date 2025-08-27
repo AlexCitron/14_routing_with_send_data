@@ -1,4 +1,4 @@
-import {Link, useLoaderData, useParams, useSearchParams} from "react-router-dom";
+import {Link, NavLink, useLoaderData, useParams, useSearchParams} from "react-router-dom";
 
 export default function Category() {
     const products = useLoaderData();
@@ -65,13 +65,13 @@ export default function Category() {
                         <li
                             key={product.id}
                             style={{ listStyle: "none" }}>
-                            <Link
+                            <NavLink state={{products: products}}
                                 className="relative flex flex-col items-center justify-center group"
                                 to={`/product/${product.id}`}>
                                 <span className='absolute z-10 text-md font-semibold text-white group-hover:text-xl  duration-500 text-center'>{product.name}<br/>{product.price}$</span>
                                 {<img className="rounded-xl" src={product.img} alt={product.name}/>}
                                 <div className='absolute inset-0 rounded-xl group-hover:bg-gray-900 group-hover:opacity-70 transition duration-500'></div>
-                            </Link>
+                            </NavLink>
                         </li>
                     ))}
                 </ul>

@@ -1,10 +1,10 @@
-import {useLoaderData, useParams} from "react-router-dom";
+import { useLocation, useParams} from "react-router-dom";
 
 
 export default function ProductDetails() {
     const { productId} = useParams()
-    const products = useLoaderData()
-    const currentProduct = products.find(p => p.id === productId)
+    const {state} = useLocation()
+    const currentProduct = state.products.find(p => p.id === productId)
     if (!currentProduct) {
         return <p className="text-center text-red-500 font-bold text-xl">Not found</p>
     }
