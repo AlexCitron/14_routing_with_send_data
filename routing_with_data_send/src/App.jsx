@@ -9,6 +9,7 @@ import ProductDetails from "./pages/ProductDetails.jsx";
 import Layout from "./components/Layout.jsx";
 import Thanks from "./pages/Thanks.jsx";
 import FetchData from "./utils/FetchData.js";
+import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
 /*Setting routes*/
 const router = createBrowserRouter([{
@@ -17,6 +18,7 @@ const router = createBrowserRouter([{
             index: true,
             element: <Home />,
             loader: () => FetchData('http://localhost:9000/categories'),
+            errorElement: <ErrorBoundary />,
         },
         {path: "cart", element: <Cart />},
         {path: "about", element: <About />},
@@ -24,11 +26,13 @@ const router = createBrowserRouter([{
             path: "category/:categoryId",
             element: <Category />,
             loader: () => FetchData('http://localhost:9000/products'),
+            errorElement: <ErrorBoundary />,
         },
         {
             path: "product/:productId",
             element: <ProductDetails />,
             loader: () => FetchData('http://localhost:9000/products'),
+            errorElement: <ErrorBoundary />,
         },
         {path: "thanks", element: <Thanks />},
         {path: "*", element: <NotFound />},
